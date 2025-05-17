@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Chat App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Voice Chat Rooms</h1>
+        
+        <!-- Name Input -->
+        <div class="max-w-md mx-auto mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4">Enter Your Name</h2>
+            <div class="flex gap-2">
+                <input type="text" id="userName" placeholder="Enter your name" 
+                       class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                <button id="setName" 
+                        class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                    Set Name
+                </button>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Room Creation -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Create Room</h2>
+                <div class="flex gap-2">
+                    <input type="text" id="roomName" placeholder="Enter room name" 
+                           class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    <button id="createRoom" 
+                            class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        Create
+                    </button>
+                </div>
+            </div>
+
+            <!-- Room List -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Available Rooms</h2>
+                <div id="roomList" class="space-y-2">
+                    <!-- Rooms will be listed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Room -->
+        <div id="activeRoom" class="mt-8 bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-2xl font-semibold mb-4">Current Room: <span id="currentRoomName"></span></h2>
+            <div id="participants" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Participants will be listed here -->
+            </div>
+            <button id="leaveRoom" 
+                    class="mt-4 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                Leave Room
+            </button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.7.3/wavesurfer.esm.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
